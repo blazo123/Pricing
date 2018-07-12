@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelDatabase" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUTOMAT_KLIENT">
+    <Key>
+      <PropertyRef Name="ODBIORCA" />
+    </Key>
+    <Property Name="ODBIORCA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nazwa_Firmy" Type="String" MaxLength="210" FixedLength="false" Unicode="false" />
+    <Property Name="Segment_O_Z_2017" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Segment_O_Z_2018" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Max__Data_Faktury" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Marza_Rok_Obecny" Type="String" MaxLength="41" FixedLength="false" Unicode="false" />
+    <Property Name="Marża_TOTAL" Type="String" MaxLength="41" FixedLength="false" Unicode="false" />
+    <Property Name="Branza" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AUTOMAT_MATERIAL">
+    <Key>
+      <PropertyRef Name="MATERIAL" />
+    </Key>
+    <Property Name="MATERIAL" Type="String" MaxLength="54" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ilosc30dni" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Ilosc90dni" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="MAABC" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="STANATP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STAN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Zapas_30_dni" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Zapas_90_dni" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="BRAKI90" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="AUTOMAT_TYPKLIENTA_CENA">
+    <Key>
+      <PropertyRef Name="TYP_KLIENTA" />
+      <PropertyRef Name="WIELKOSC" />
+      <PropertyRef Name="ODBIORCA" />
+      <PropertyRef Name="MATERIAL" />
+    </Key>
+    <Property Name="TYP_KLIENTA" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WIELKOSC" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ODBIORCA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATERIAL" Type="String" MaxLength="54" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CENA1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CENA2" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CENA3" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SREDNIA90" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OSCENA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AUTOMAT_CENY_ODTW">
+    <Key>
+      <PropertyRef Name="MATERIAL" />
+    </Key>
+    <Property Name="MATERIAL" Type="String" MaxLength="54" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CENA1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="WAL1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DATA2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CENA2" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="WAL2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DATA3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CENA3" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="WAL3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="EnityData" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUTOMAT_KLIENT" EntityType="Self.AUTOMAT_KLIENT" />
+    <EntitySet Name="AUTOMAT_MATERIAL" EntityType="Self.AUTOMAT_MATERIAL" />
+    <EntitySet Name="AUTOMAT_TYPKLIENTA_CENA" EntityType="Self.AUTOMAT_TYPKLIENTA_CENA" />
+    <EntitySet Name="AUTOMAT_CENY_ODTW" EntityType="Self.AUTOMAT_CENY_ODTW" />
+  </EntityContainer>
+</Schema>

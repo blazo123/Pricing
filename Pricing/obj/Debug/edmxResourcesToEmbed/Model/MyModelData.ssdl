@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelDatabase.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DWS1.AUTOMAT_CENY_ODTW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AUTOMAT_CENY_ODTW">
+    <Key>
+      <PropertyRef Name="MATERIAL" />
+    </Key>
+    <Property Name="MATERIAL" Type="varchar2" MaxLength="54" Nullable="false" />
+    <Property Name="DATA1" Type="varchar2" MaxLength="10" />
+    <Property Name="CENA1" Type="number" Precision="38" Scale="0" />
+    <Property Name="WAL1" Type="varchar2" MaxLength="15" />
+    <Property Name="DATA2" Type="varchar2" MaxLength="10" />
+    <Property Name="CENA2" Type="number" Precision="38" Scale="0" />
+    <Property Name="WAL2" Type="varchar2" MaxLength="15" />
+    <Property Name="DATA3" Type="varchar2" MaxLength="10" />
+    <Property Name="CENA3" Type="number" Precision="38" Scale="0" />
+    <Property Name="WAL3" Type="varchar2" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6047: The Entity Framework provider in use reported the primary key column ODBIORCA on table AUTOMAT_KLIENT to be nullable. Entity Framework does not allow nullable primary keys, therefore it will assume the column is not nullable and any null values stored in this column may cause errors at runtime.-->
+  <EntityType Name="AUTOMAT_KLIENT">
+    <Key>
+      <PropertyRef Name="ODBIORCA" />
+    </Key>
+    <Property Name="ODBIORCA" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="Nazwa_Firmy" Type="varchar2" MaxLength="210" />
+    <Property Name="Segment-O/Z-2017" Type="varchar2" MaxLength="7" />
+    <Property Name="Segment-O/Z-2018" Type="varchar2" MaxLength="7" />
+    <Property Name="Max. Data Faktury" Type="varchar2" MaxLength="10" />
+    <Property Name="Marza_Rok_Obecny" Type="varchar2" MaxLength="41" />
+    <Property Name="Marża_TOTAL" Type="varchar2" MaxLength="41" />
+    <Property Name="Branza" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6047: The Entity Framework provider in use reported the primary key column MATERIAL on table AUTOMAT_MATERIAL to be nullable. Entity Framework does not allow nullable primary keys, therefore it will assume the column is not nullable and any null values stored in this column may cause errors at runtime.-->
+  <EntityType Name="AUTOMAT_MATERIAL">
+    <Key>
+      <PropertyRef Name="MATERIAL" />
+    </Key>
+    <Property Name="MATERIAL" Type="varchar2" MaxLength="54" Nullable="false" />
+    <Property Name="Ilosc30dni" Type="number" Precision="38" Scale="0" />
+    <Property Name="Ilosc90dni" Type="number" Precision="38" Scale="0" />
+    <Property Name="MAABC" Type="varchar2" MaxLength="3" />
+    <Property Name="STANATP" Type="number" Precision="38" Scale="0" />
+    <Property Name="STAN" Type="number" Precision="38" Scale="0" />
+    <Property Name="Zapas_30_dni" Type="number" Precision="38" Scale="0" />
+    <Property Name="Zapas_90_dni" Type="number" Precision="38" Scale="0" />
+    <Property Name="BRAKI90" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6047: The Entity Framework provider in use reported the primary key column TYP_KLIENTA on table AUTOMAT_TYPKLIENTA_CENA to be nullable. Entity Framework does not allow nullable primary keys, therefore it will assume the column is not nullable and any null values stored in this column may cause errors at runtime.
+warning 6047: The Entity Framework provider in use reported the primary key column WIELKOSC on table AUTOMAT_TYPKLIENTA_CENA to be nullable. Entity Framework does not allow nullable primary keys, therefore it will assume the column is not nullable and any null values stored in this column may cause errors at runtime.
+warning 6047: The Entity Framework provider in use reported the primary key column ODBIORCA on table AUTOMAT_TYPKLIENTA_CENA to be nullable. Entity Framework does not allow nullable primary keys, therefore it will assume the column is not nullable and any null values stored in this column may cause errors at runtime.
+warning 6047: The Entity Framework provider in use reported the primary key column MATERIAL on table AUTOMAT_TYPKLIENTA_CENA to be nullable. Entity Framework does not allow nullable primary keys, therefore it will assume the column is not nullable and any null values stored in this column may cause errors at runtime.-->
+  <EntityType Name="AUTOMAT_TYPKLIENTA_CENA">
+    <Key>
+      <PropertyRef Name="TYP_KLIENTA" />
+      <PropertyRef Name="WIELKOSC" />
+      <PropertyRef Name="ODBIORCA" />
+      <PropertyRef Name="MATERIAL" />
+    </Key>
+    <Property Name="TYP_KLIENTA" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="WIELKOSC" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="ODBIORCA" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="MATERIAL" Type="varchar2" MaxLength="54" Nullable="false" />
+    <Property Name="CENA1" Type="number" Precision="38" Scale="0" />
+    <Property Name="CENA2" Type="number" Precision="38" Scale="0" />
+    <Property Name="CENA3" Type="number" Precision="38" Scale="0" />
+    <Property Name="SREDNIA90" Type="number" Precision="38" Scale="0" />
+    <Property Name="OSCENA" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="ModelDatabaseStoreContainer">
+    <EntitySet Name="AUTOMAT_KLIENT" EntityType="Self.AUTOMAT_KLIENT" Schema="DWS1" store:Type="Views" />
+    <EntitySet Name="AUTOMAT_MATERIAL" EntityType="Self.AUTOMAT_MATERIAL" Schema="DWS1" store:Type="Views" />
+    <EntitySet Name="AUTOMAT_TYPKLIENTA_CENA" EntityType="Self.AUTOMAT_TYPKLIENTA_CENA" Schema="DWS1" store:Type="Views" />
+    <EntitySet Name="AUTOMAT_CENY_ODTW" EntityType="Self.AUTOMAT_CENY_ODTW" store:Type="Views" store:Schema="DWS1">
+      <DefiningQuery>SELECT 
+"AUTOMAT_CENY_ODTW"."MATERIAL" AS "MATERIAL", 
+"AUTOMAT_CENY_ODTW"."DATA1" AS "DATA1", 
+"AUTOMAT_CENY_ODTW"."CENA1" AS "CENA1", 
+"AUTOMAT_CENY_ODTW"."WAL1" AS "WAL1", 
+"AUTOMAT_CENY_ODTW"."DATA2" AS "DATA2", 
+"AUTOMAT_CENY_ODTW"."CENA2" AS "CENA2", 
+"AUTOMAT_CENY_ODTW"."WAL2" AS "WAL2", 
+"AUTOMAT_CENY_ODTW"."DATA3" AS "DATA3", 
+"AUTOMAT_CENY_ODTW"."CENA3" AS "CENA3", 
+"AUTOMAT_CENY_ODTW"."WAL3" AS "WAL3"
+FROM "DWS1"."AUTOMAT_CENY_ODTW" "AUTOMAT_CENY_ODTW"</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

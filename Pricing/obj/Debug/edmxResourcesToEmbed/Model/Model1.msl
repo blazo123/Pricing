@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnityDataStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="AUTOMAT_KLIENT">
+      <EntityTypeMapping TypeName="EnityData.AUTOMAT_KLIENT">
+        <MappingFragment StoreEntitySet="AUTOMAT_KLIENT">
+          <ScalarProperty Name="ODBIORCA" ColumnName="ODBIORCA" />
+          <ScalarProperty Name="Nazwa_Firmy" ColumnName="Nazwa_Firmy" />
+          <ScalarProperty Name="Segment_O_Z_2017" ColumnName="Segment-O/Z-2017" />
+          <ScalarProperty Name="Segment_O_Z_2018" ColumnName="Segment-O/Z-2018" />
+          <ScalarProperty Name="Max__Data_Faktury" ColumnName="Max. Data Faktury" />
+          <ScalarProperty Name="Marza_Rok_Obecny" ColumnName="Marza_Rok_Obecny" />
+          <ScalarProperty Name="Marża_TOTAL" ColumnName="Marża_TOTAL" />
+          <ScalarProperty Name="Branza" ColumnName="Branza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUTOMAT_MATERIAL">
+      <EntityTypeMapping TypeName="EnityData.AUTOMAT_MATERIAL">
+        <MappingFragment StoreEntitySet="AUTOMAT_MATERIAL">
+          <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+          <ScalarProperty Name="Ilosc30dni" ColumnName="Ilosc30dni" />
+          <ScalarProperty Name="Ilosc90dni" ColumnName="Ilosc90dni" />
+          <ScalarProperty Name="MAABC" ColumnName="MAABC" />
+          <ScalarProperty Name="STANATP" ColumnName="STANATP" />
+          <ScalarProperty Name="STAN" ColumnName="STAN" />
+          <ScalarProperty Name="Zapas_30_dni" ColumnName="Zapas_30_dni" />
+          <ScalarProperty Name="Zapas_90_dni" ColumnName="Zapas_90_dni" />
+          <ScalarProperty Name="BRAKI90" ColumnName="BRAKI90" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUTOMAT_TYPKLIENTA_CENA">
+      <EntityTypeMapping TypeName="EnityData.AUTOMAT_TYPKLIENTA_CENA">
+        <MappingFragment StoreEntitySet="AUTOMAT_TYPKLIENTA_CENA">
+          <ScalarProperty Name="TYP_KLIENTA" ColumnName="TYP_KLIENTA" />
+          <ScalarProperty Name="WIELKOSC" ColumnName="WIELKOSC" />
+          <ScalarProperty Name="ODBIORCA" ColumnName="ODBIORCA" />
+          <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+          <ScalarProperty Name="CENA1" ColumnName="CENA1" />
+          <ScalarProperty Name="CENA2" ColumnName="CENA2" />
+          <ScalarProperty Name="CENA3" ColumnName="CENA3" />
+          <ScalarProperty Name="SREDNIA90" ColumnName="SREDNIA90" />
+          <ScalarProperty Name="OSCENA" ColumnName="OSCENA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUTOMAT_CENY_ODTW">
+      <EntityTypeMapping TypeName="EnityData.AUTOMAT_CENY_ODTW">
+        <MappingFragment StoreEntitySet="AUTOMAT_CENY_ODTW">
+          <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+          <ScalarProperty Name="DATA1" ColumnName="DATA1" />
+          <ScalarProperty Name="CENA1" ColumnName="CENA1" />
+          <ScalarProperty Name="WAL1" ColumnName="WAL1" />
+          <ScalarProperty Name="DATA2" ColumnName="DATA2" />
+          <ScalarProperty Name="CENA2" ColumnName="CENA2" />
+          <ScalarProperty Name="WAL2" ColumnName="WAL2" />
+          <ScalarProperty Name="DATA3" ColumnName="DATA3" />
+          <ScalarProperty Name="CENA3" ColumnName="CENA3" />
+          <ScalarProperty Name="WAL3" ColumnName="WAL3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
