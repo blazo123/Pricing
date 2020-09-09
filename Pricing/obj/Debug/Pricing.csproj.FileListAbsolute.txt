@@ -20,4 +20,73 @@ C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debu
 C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.GenerateResource.cache
 C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.exe
 C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.pdb
-C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csprojResolveAssemblyReference.cache
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.xml
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form2.resources
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Pricing.exe.config
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.ResolveComReference.cache
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.exe
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.pdb
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Pricing.exe
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Pricing.pdb
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Dapper.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\Dapper.xml
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.xml
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.csprojResolveAssemblyReference.cache
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form1.resources
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form2.resources
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.Properties.Resources.resources
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny — kopia\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.GenerateResource.Cache
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.CoreCompileInputs.cache
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.CopyComplete
+C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csprojAssemblyReference.cache
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Pricing.exe.config
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Pricing.exe
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Pricing.pdb
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Dapper.dll
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.dll
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Dapper.xml
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.xml
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csprojAssemblyReference.cache
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.ResolveComReference.cache
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form1.resources
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form2.resources
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Properties.Resources.resources
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.GenerateResource.cache
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.CoreCompileInputs.cache
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.CopyComplete
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.exe
+C:\Users\b_kolek.AD\Desktop\Program_Ceny\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.pdb
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Pricing.exe.config
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Pricing.exe
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Pricing.pdb
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Dapper.dll
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.dll
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.dll
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.dll
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\Dapper.xml
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.xml
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\bin\Debug\EntityFramework.SqlServer.xml
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csprojAssemblyReference.cache
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.ResolveComReference.cache
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form1.resources
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Form2.resources
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.Properties.Resources.resources
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.GenerateResource.cache
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.CoreCompileInputs.cache
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.csproj.CopyComplete
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.exe
+N:\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\obj\Debug\Pricing.pdb
