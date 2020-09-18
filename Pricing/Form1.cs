@@ -17,7 +17,7 @@ namespace Pricing
         string nzlec;
         string odbiorca;
         string dataZlecenie;
-        public int Width { get; set; }
+        //public int Width { get; set; }
 
         public Form1()
         {
@@ -73,6 +73,7 @@ namespace Pricing
 
             string odbiorca = dataGridView2.Rows[numer].Cells[0].Value.ToString();
             string material = dataGridView2.Rows[numer].Cells[1].Value.ToString();
+            int iloscMaterialu = Convert.ToInt32(dataGridView2.Rows[numer].Cells[6].Value);
 
             try
             {
@@ -96,6 +97,7 @@ namespace Pricing
                             stanATPlbl.Text = "Stan ATP : " + reader1["STANATP"].ToString();
                             StanNIelbl.Text = "Stan Nieog : " + reader1["STAN"].ToString();
                             MaterialNamelbl.Text = reader1["NAZWA_MATERIALU"].ToString();
+                            dniZapasuKientlbl.Text = "Ile dni zapasu :" + PoliczIleZapasu(iloscMaterialu,Convert.ToInt32(reader1["Ilosc90dni"]));
                         }
 
                         using (OracleCommand cmd15 = new OracleCommand("SELECT material,data1,cena1,data2,cena2,data3,cena3 FROM DWS1.AUTOMAT_CENY_ODTW_TABLE WHERE MATERIAL = '" + material.ToString() + "'", conn5))
@@ -127,7 +129,6 @@ namespace Pricing
                                     dataodtw2lbl.Text = "---";
                                     dataodtw3lbl.Text = "---";
                                 }
-
                             }
 
                         }
@@ -192,6 +193,11 @@ namespace Pricing
 
         }
 
+        private string PoliczIleZapasu(int iloscMaterialu, int IloscSprzedana)
+        {
+            return ((IloscSprzedana / 90) * iloscMaterialu).ToString();
+        }
+
         private void Give_Details_toDG2(string num,string odb)
         {
             DateTime dokiedyzlecenie = dateTimePicker1.Value.Date;
@@ -242,15 +248,20 @@ namespace Pricing
 
                             currSeglbl.Text = "Segment Obecny O/Z : " + reader["Segment-O/Z-2019"].ToString();
 
-                            if (string.IsNullOrEmpty(reader["KONTROLOWANY"].ToString()) == true)
-                            {
-                                namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();
-                                namofClientlbl.ForeColor = Color.Black;
-                            }
-                            else
+                            if (string.IsNullOrEmpty(reader["KONTROLOWANY"].ToString()) != true)
                             {
                                 namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();
                                 namofClientlbl.ForeColor = Color.Red;
+                            }
+                            //else if (string.IsNullOrEmpty(reader["ROZWOJOWY"].ToString()) != true)
+                            //{
+                            //    namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();                        DO WŁĄCZENIA
+                            //    namofClientlbl.ForeColor = Color.Green;
+                            //}
+                            else
+                            {
+                                namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();
+                                namofClientlbl.ForeColor = Color.Black;
                             }
 
                             lastySeglbl.Text = "Segment Rok Poprzedni O/Z : " + reader["Segment-O/Z-2018"].ToString();
@@ -261,6 +272,7 @@ namespace Pricing
                             marzatotal.Text = "Marża Klient : " + reader["Marża_TOTAL"].ToString();
                             branzalbl.Text = "Branża : " + reader["Branza"].ToString();
                             nkUklbl.Text = "Czy NK/UK : " + reader["NK_UK"].ToString();
+                            klientSimplelbl.Text = "Czy klient SIMPLE : " + reader["CZY_SIMPLE"].ToString();
                         }
                     }
 
@@ -288,7 +300,7 @@ namespace Pricing
         {
             string powod = "Powód odrzucenia:  " + negativetbox.Text;
 
-            Get_Status_Insert_SAP_and_Mail("O");
+            Get_Status_Insert_SAP_and_Mail("O",nzlec);
 
             Smail neg = new Smail();
 
@@ -313,7 +325,7 @@ namespace Pricing
         {
             string uwagi = "Uwagi: " + negativetbox.Text;
 
-            Get_Status_Insert_SAP_and_Mail("P");
+            Get_Status_Insert_SAP_and_Mail("P", nzlec);
             Smail poz = new Smail();
 
 
@@ -333,13 +345,14 @@ namespace Pricing
         }
 
 
-        private void Get_Status_Insert_SAP_and_Mail(string stat)
+        private void Get_Status_Insert_SAP_and_Mail(string stat,string numerZlecenia)
         {
             string dataZlecenie = dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
             string dokiedyTest = DateTest();
 
             string StringQuery;
+            string InsertZlecenieHistory;
             string StringQuery2;
 
 
@@ -359,10 +372,15 @@ namespace Pricing
                             string mat = dataGridView2.Rows[i].Cells[1].Value.ToString();
                             string partia = dataGridView2.Rows[i].Cells[2].Value.ToString();
                             string JM = dataGridView2.Rows[i].Cells[3].Value.ToString();
-                            var cena = dataGridView2.Rows[i].Cells[6].Value;
+                            string ilosc = dataGridView2.Rows[i].Cells[6].Value.ToString();
                             string CENA_MIN = dataGridView2.Rows[i].Cells[4].Value.ToString();
                             string CENA_ZPR1 = dataGridView2.Rows[i].Cells[5].Value.ToString();
                             string CENA_NOWA = dataGridView2.Rows[i].Cells[7].Value.ToString();
+                            string vprs = dataGridView2.Rows[i].Cells[10].Value.ToString();
+                            string MARZA_MIN = dataGridView2.Rows[i].Cells[11].Value.ToString();
+                            string MARZA_ZPR1 = dataGridView2.Rows[i].Cells[12].Value.ToString();
+                            string MARZA_NOWA = dataGridView2.Rows[i].Cells[13].Value.ToString();
+                            string UZYTKOWNIK = Environment.UserName;
 
 
 
@@ -374,9 +392,32 @@ namespace Pricing
                                             + dokiedyTest.ToString() + "' WHERE VBELN ='"
                                             + nzlec.ToString() + "' and MATNR ='"
                                             + mat.ToString() + "' and CHARG= '"
-                                            + partia.ToString() + "'";                                           
+                                            + partia.ToString() + "'";
+
+
+                            InsertZlecenieHistory = @"INSERT INTO DWS1.ZMIANA_CEN_APLIKACJA_HISTORIA
+                                            VALUES ('"
+                                            + numerZlecenia.ToString() + "','"
+                                            + mat.ToString() + "','"
+                                            + partia.ToString() + "','"
+                                            + CENA_MIN.ToString() + "','"
+                                            + CENA_ZPR1.ToString() + "','"
+                                            + ilosc.ToString() + "','"
+                                            + CENA_NOWA.ToString() + "','"
+                                            + dataZlecenie.ToString() + "','"
+                                            + dokiedyTest.ToString() + "','"
+                                            + vprs.ToString() + "','"
+                                            + MARZA_MIN.ToString() + "','"
+                                            + MARZA_ZPR1.ToString() + "','"
+                                            + MARZA_NOWA.ToString() + "','"
+                                            + UZYTKOWNIK.ToString() + "','"
+                                            + odb.ToString() + "')"; 
+                            
 
                             cmdstat3.CommandText = StringQuery;
+                            cmdstat3.ExecuteNonQuery();
+
+                            cmdstat3.CommandText = InsertZlecenieHistory;
                             cmdstat3.ExecuteNonQuery();
                         }
 
@@ -387,7 +428,7 @@ namespace Pricing
                         cmdstat3.CommandText = StringQuery2;
                         cmdstat3.ExecuteNonQuery();
       
-                        MessageBox.Show("Zlecenie nr " + nzlec + " zostało zaakceptowane i przekazane do SAP"); 
+                        //MessageBox.Show("Zlecenie nr " + nzlec + " zostało zaakceptowane i przekazane do SAP"); 
                     }
                     conne1.Close(); 
                     
@@ -569,6 +610,8 @@ namespace Pricing
             branzalbl.Text = "Branża : ";
             nkUklbl.Text = "Czy NK/UK : ";
             namofClientlbl.Text = "---";
+            klientSimplelbl.Text = "Czy klient SIMPLE : ";
+            dniZapasuKientlbl.Text = "Ile dni zapasu :";
         }
     }
 }

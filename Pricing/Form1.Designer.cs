@@ -44,6 +44,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.marz_zleclbl = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.klientSimplelbl = new System.Windows.Forms.Label();
             this.marza2018_bezmag = new System.Windows.Forms.Label();
             this.marzaII2018 = new System.Windows.Forms.Label();
             this.branzalbl = new System.Windows.Forms.Label();
@@ -92,6 +93,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.RefreshData = new System.Windows.Forms.Button();
+            this.dniZapasuKientlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -167,6 +169,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
+            this.groupBox3.Controls.Add(this.klientSimplelbl);
             this.groupBox3.Controls.Add(this.marza2018_bezmag);
             this.groupBox3.Controls.Add(this.marzaII2018);
             this.groupBox3.Controls.Add(this.branzalbl);
@@ -184,6 +187,15 @@
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dane Klient";
+            // 
+            // klientSimplelbl
+            // 
+            this.klientSimplelbl.AutoSize = true;
+            this.klientSimplelbl.Location = new System.Drawing.Point(179, 22);
+            this.klientSimplelbl.Name = "klientSimplelbl";
+            this.klientSimplelbl.Size = new System.Drawing.Size(103, 13);
+            this.klientSimplelbl.TabIndex = 17;
+            this.klientSimplelbl.Text = "Czy klient SIMPLE : ";
             // 
             // marza2018_bezmag
             // 
@@ -269,6 +281,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.groupBox2.Controls.Add(this.dniZapasuKientlbl);
             this.groupBox2.Controls.Add(this.StanNIelbl);
             this.groupBox2.Controls.Add(this.stanATPlbl);
             this.groupBox2.Controls.Add(this.katmatlbl);
@@ -755,6 +768,15 @@
             this.RefreshData.UseVisualStyleBackColor = false;
             this.RefreshData.Click += new System.EventHandler(this.RefreshData_Click);
             // 
+            // dniZapasuKientlbl
+            // 
+            this.dniZapasuKientlbl.AutoSize = true;
+            this.dniZapasuKientlbl.Location = new System.Drawing.Point(16, 232);
+            this.dniZapasuKientlbl.Name = "dniZapasuKientlbl";
+            this.dniZapasuKientlbl.Size = new System.Drawing.Size(78, 13);
+            this.dniZapasuKientlbl.TabIndex = 18;
+            this.dniZapasuKientlbl.Text = "Ile dni zapasu :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -855,6 +877,8 @@
         private System.Windows.Forms.Button RefreshData;
         private System.Windows.Forms.Label marza2018_bezmag;
         private System.Windows.Forms.Label marzaII2018;
+        private System.Windows.Forms.Label klientSimplelbl;
+        private System.Windows.Forms.Label dniZapasuKientlbl;
     }
 }
 
