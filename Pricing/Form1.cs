@@ -100,7 +100,7 @@ namespace Pricing
                             dniZapasuKientlbl.Text = "Ile dni zapasu :" + PoliczIleZapasu(iloscMaterialu,Convert.ToInt32(reader1["Ilosc90dni"]));
                         }
 
-                        using (OracleCommand cmd15 = new OracleCommand("SELECT material,data1,cena1,data2,cena2,data3,cena3 FROM DWS1.AUTOMAT_CENY_ODTW_TABLE WHERE MATERIAL = '" + material.ToString() + "'", conn5))
+                        using (OracleCommand cmd15 = new OracleCommand("SELECT material,data1,cena1,ilosc1,status1,data2,cena2,ilosc2,status2,data3,cena3,ilosc3,status3 FROM DWS1.AUTOMAT_CENY_ODTW_TABLE WHERE MATERIAL = '" + material.ToString() + "'", conn5))
                         {
                             if (conn5.State == ConnectionState.Closed)
                             {
@@ -118,6 +118,14 @@ namespace Pricing
                                     dataodtw1lbl.Text = reader3["DATA1"].ToString();
                                     dataodtw2lbl.Text = reader3["DATA2"].ToString();
                                     dataodtw3lbl.Text = reader3["DATA3"].ToString();
+
+                                    iloscOdt1.Text = reader3["ILOSC1"].ToString();
+                                    iloscOdt2.Text = reader3["ILOSC2"].ToString();
+                                    iloscOdt3.Text = reader3["ILOSC3"].ToString();
+
+                                    statusOdtlbl1.Text = reader3["STATUS1"].ToString();
+                                    statusOdtlbl2.Text = reader3["STATUS2"].ToString();
+                                    statusOdtlbl3.Text = reader3["STATUS3"].ToString();
                                 }
                                 else
                                 {
@@ -128,6 +136,14 @@ namespace Pricing
                                     dataodtw1lbl.Text = "---";
                                     dataodtw2lbl.Text = "---";
                                     dataodtw3lbl.Text = "---";
+
+                                    iloscOdt1.Text = "---";
+                                    iloscOdt2.Text = "---";
+                                    iloscOdt3.Text = "---";
+
+                                    statusOdtlbl1.Text = "---";
+                                    statusOdtlbl2.Text = "---";
+                                    statusOdtlbl3.Text = "---";
                                 }
                             }
 
@@ -148,7 +164,7 @@ namespace Pricing
                                 dataGridView3.AutoResizeColumns();
                             }
 
-                            using (OracleCommand cmd14 = new OracleCommand("SELECT odbiorca,material,cena1,cena2,cena3,srednia90,OSCENA FROM AUTOMAT_TYPKLIENTA_CENA_TABLE WHERE MATERIAL = '" + material.ToString() + "'" +
+                            using (OracleCommand cmd14 = new OracleCommand("SELECT odbiorca,material,cena1,cena2,cena3,marza1,marza2,marza3,srednia90,OSCENA FROM AUTOMAT_TYPKLIENTA_CENA_TABLE WHERE MATERIAL = '" + material.ToString() + "'" +
                                                 "and odbiorca ='" + odbiorca.ToString() + "'", conn5))
                             {
                                 if (conn5.State == ConnectionState.Closed)
@@ -164,6 +180,9 @@ namespace Pricing
                                         fstlastpricelbl.Text = reader2["CENA1"].ToString();
                                         seclastpricelbl.Text = reader2["CENA2"].ToString();
                                         trdlastprice.Text = reader2["CENA3"].ToString();
+                                        firstlastmergelbl.Text = reader2["MARZA1"].ToString();
+                                        seclastmergelbl.Text = reader2["MARZA2"].ToString();
+                                        thirdtlastmergelbl.Text = reader2["MARZA3"].ToString();
                                         lastdsprzMKlabl.Text = reader2["OSCENA"].ToString();
                                     }
                                     else
@@ -171,6 +190,9 @@ namespace Pricing
                                         fstlastpricelbl.Text = "---";
                                         seclastpricelbl.Text = "---";
                                         trdlastprice.Text = "---";
+                                        firstlastmergelbl.Text = "---";
+                                        seclastmergelbl.Text = "---";
+                                        thirdtlastmergelbl.Text = "---";
                                         lastdsprzMKlabl.Text = "---";
                                     }
                                 }
@@ -193,9 +215,17 @@ namespace Pricing
 
         }
 
-        private string PoliczIleZapasu(int iloscMaterialu, int IloscSprzedana)
+        private string PoliczIleZapasu(double iloscMaterialu, double IloscSprzedana)
         {
-            return ((IloscSprzedana / 90) * iloscMaterialu).ToString();
+            double sprzedazDzienna = IloscSprzedana / 90;
+
+            
+            if (IloscSprzedana == 0)
+            {
+                return "0";
+            }
+            return (Convert.ToInt32(iloscMaterialu/sprzedazDzienna)).ToString();
+
         }
 
         private void Give_Details_toDG2(string num,string odb)
@@ -209,7 +239,7 @@ namespace Pricing
             {
                 using (OracleConnection conn1 = new OracleConnection(Connection.oradb))
 
-                using (OracleCommand cmd1 = new OracleCommand("SELECT '" + odbiorca.ToString() + "' as ODBIORCA,MATERIAL as Material,PARTIA as Partia,JM as JM, CENA_MIN,CENA_PROP as Cena_Prop, ILOSC,CENA_NOWA, OKRES_DO,RABAT,VPRS_ZAKLAD_0001 as VPRS, MARZA_MIN,MARZA_PROP, MARZA_NOWA FROM DWS1.POZYCJE WHERE vbeln ='" + nzlec.ToString() + "'", conn1))
+                using (OracleCommand cmd1 = new OracleCommand("SELECT '" + odbiorca.ToString() + "' as ODBIORCA,MATERIAL as Material,PARTIA as Partia,JM as JM, CENA_MIN,CENA_PROP as Cena_Prop, ILOSC,CENA_NOWA,CENA2, OKRES_DO,RABAT,VPRS_ZAKLAD_0001 as VPRS, MARZA_MIN,MARZA_PROP, MARZA_NOWA FROM DWS1.POZYCJE WHERE vbeln ='" + nzlec.ToString() + "'", conn1))
                 {
                     conn1.Open();
                     using (OracleDataReader reader1 = cmd1.ExecuteReader())
@@ -224,7 +254,7 @@ namespace Pricing
 
                         for (int a = 0; a < dataGridView2.Rows.Count; a++)
                         {
-                            dataGridView2.Rows[a].Cells[8].Value = dokiedyzlecenie.Date.ToString("yyyyMMdd");
+                            dataGridView2.Rows[a].Cells[9].Value = dokiedyzlecenie.Date.ToString("yyyyMMdd");
                         }
 
 
@@ -253,11 +283,11 @@ namespace Pricing
                                 namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();
                                 namofClientlbl.ForeColor = Color.Red;
                             }
-                            //else if (string.IsNullOrEmpty(reader["ROZWOJOWY"].ToString()) != true)
-                            //{
-                            //    namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();                        DO WŁĄCZENIA
-                            //    namofClientlbl.ForeColor = Color.Green;
-                            //}
+                            else if (string.IsNullOrEmpty(reader["ROZWOJOWY"].ToString()) != true)
+                            {
+                                namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();
+                                namofClientlbl.ForeColor = Color.Green;
+                            }
                             else
                             {
                                 namofClientlbl.Text = reader["Nazwa_Firmy"].ToString();
@@ -376,10 +406,10 @@ namespace Pricing
                             string CENA_MIN = dataGridView2.Rows[i].Cells[4].Value.ToString();
                             string CENA_ZPR1 = dataGridView2.Rows[i].Cells[5].Value.ToString();
                             string CENA_NOWA = dataGridView2.Rows[i].Cells[7].Value.ToString();
-                            string vprs = dataGridView2.Rows[i].Cells[10].Value.ToString();
-                            string MARZA_MIN = dataGridView2.Rows[i].Cells[11].Value.ToString();
-                            string MARZA_ZPR1 = dataGridView2.Rows[i].Cells[12].Value.ToString();
-                            string MARZA_NOWA = dataGridView2.Rows[i].Cells[13].Value.ToString();
+                            string vprs = dataGridView2.Rows[i].Cells[11].Value.ToString();
+                            string MARZA_MIN = dataGridView2.Rows[i].Cells[12].Value.ToString();
+                            string MARZA_ZPR1 = dataGridView2.Rows[i].Cells[13].Value.ToString();
+                            string MARZA_NOWA = dataGridView2.Rows[i].Cells[14].Value.ToString();
                             string UZYTKOWNIK = Environment.UserName;
 
 
@@ -447,7 +477,7 @@ namespace Pricing
         {
            
 
-            string merge = dataGridView2.CurrentRow.Cells[10].Value.ToString();
+            string merge = dataGridView2.CurrentRow.Cells[11].Value.ToString();
 
             if (dataGridView2.CurrentCell.Value.Equals(0))
             {
@@ -457,7 +487,7 @@ namespace Pricing
             else
             {
                 string v1 = dataGridView2.CurrentRow.Cells[7].Value.ToString();
-                string v2 = dataGridView2.CurrentRow.Cells[10].Value.ToString();
+                string v2 = dataGridView2.CurrentRow.Cells[11].Value.ToString();
 
                 double vd1 = Convert.ToDouble(v1);
                 double vd2 = Convert.ToDouble(v2);
@@ -465,7 +495,7 @@ namespace Pricing
 
                 string v3 = vd3.ToString() + " %";
 
-                dataGridView2.CurrentRow.Cells[13].Value = v3.ToString();
+                dataGridView2.CurrentRow.Cells[14].Value = v3.ToString();
             };
 
 
@@ -552,22 +582,25 @@ namespace Pricing
 
 
             DataGridViewColumn column9 = dataGridView2.Columns[8];
-            column9.Width = 75;
+            column9.Width = 55;
 
             DataGridViewColumn column10 = dataGridView2.Columns[9];
-            column10.Width = 45;
+            column10.Width = 68;
 
             DataGridViewColumn column11 = dataGridView2.Columns[10];
             column11.Width = 45;
 
             DataGridViewColumn column12 = dataGridView2.Columns[11];
-            column12.Width = 80;
+            column12.Width = 60;
 
             DataGridViewColumn column13 = dataGridView2.Columns[12];
-            column13.Width = 90;
+            column13.Width = 80;
 
             DataGridViewColumn column14 = dataGridView2.Columns[13];
-            column14.Width = 90;
+            column14.Width = 85;
+
+            DataGridViewColumn column15 = dataGridView2.Columns[14];
+            column15.Width = 90;
 
         }
 
@@ -591,6 +624,9 @@ namespace Pricing
             fstlastpricelbl.Text = "---";
             seclastpricelbl.Text = "---";
             trdlastprice.Text = "---";
+            firstlastmergelbl.Text =  "---";
+            seclastmergelbl.Text = "---";
+            thirdtlastmergelbl.Text = "---";
             lastdsprzMKlabl.Text = "---";
 
             cenaodtw1lbl.Text = "---";
@@ -600,6 +636,14 @@ namespace Pricing
             dataodtw1lbl.Text = "---";
             dataodtw2lbl.Text = "---";
             dataodtw3lbl.Text = "---";
+
+            iloscOdt1.Text = "---";
+            iloscOdt2.Text = "---";
+            iloscOdt3.Text = "---";
+
+            statusOdtlbl1.Text = "---";
+            statusOdtlbl2.Text = "---";
+            statusOdtlbl3.Text = "---";
 
             lastySeglbl.Text = "Segment Rok Poprzedni O/Z : ";
             marzaII2018.Text = "Marza II '18 : ";

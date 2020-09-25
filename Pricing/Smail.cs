@@ -33,7 +33,7 @@ namespace Pricing
                     "<br>Dział Analiz i Polityki Cenowej" +
                     @"<p><img src = C:\Users\b_kolek.AD\Desktop\Projekt_Automa_Ceny\Pricing\Pricing\Pricing\marcopol.png" + " </a>" +
                     "<p>Marcopol Sp. z o.o. Producent Śrub" +
-                    "<br>tel.: (+48 58) 55 40 545 fax.: (+48 58) 55 40 439" +
+                    "<br>tel.: (+48 58) 55 40 418 fax.: (+48 58) 55 40 439" +
                     "<br>80-209 Chwaszczyno, ul. Oliwska 100" +
                     "<br>NIP 589 000 85 28, KRS 0000084735" +
                     "<br>Sąd Rejonowy w Gdańsku, VIII Wydział Gospodarczy" +

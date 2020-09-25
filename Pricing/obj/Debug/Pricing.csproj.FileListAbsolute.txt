@@ -110,3 +110,4 @@ C:\Users\b_kolek.AD\Documents\Repozytoria\Ceny\Pricing\Pricing\obj\Debug\Pricing
 C:\Users\b_kolek.AD\Documents\Repozytoria\Ceny\Pricing\Pricing\obj\Debug\Pricing.csproj.CopyComplete
 C:\Users\b_kolek.AD\Documents\Repozytoria\Ceny\Pricing\Pricing\obj\Debug\Pricing.exe
 C:\Users\b_kolek.AD\Documents\Repozytoria\Ceny\Pricing\Pricing\obj\Debug\Pricing.pdb
+C:\Users\b_kolek.AD\Documents\Repozytoria\Ceny\Pricing\Pricing\obj\Debug\Pricing.csprojAssemblyReference.cache
