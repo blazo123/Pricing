@@ -238,8 +238,9 @@ namespace Pricing
             try
             {
                 using (OracleConnection conn1 = new OracleConnection(Connection.oradb))
+                
 
-                using (OracleCommand cmd1 = new OracleCommand("SELECT '" + odbiorca.ToString() + "' as ODBIORCA,MATERIAL as Material,PARTIA as Partia,JM as JM, CENA_MIN,CENA_PROP as Cena_Prop, ILOSC,CENA_NOWA,CENA2, OKRES_DO,RABAT,VPRS_ZAKLAD_0001 as VPRS, MARZA_MIN,MARZA_PROP, MARZA_NOWA FROM DWS1.POZYCJE WHERE vbeln ='" + nzlec.ToString() + "'", conn1))
+                using (OracleCommand cmd1 = new OracleCommand("SELECT '" + odbiorca.ToString() + "' as ODBIORCA,MATERIAL as Material,PARTIA as Partia,JM as JM, CENA_MIN,CENA_PROP as Cena_Prop, ILOSC,CENA_NOWA,CENA2,CENA_SIMPLE, OKRES_DO,RABAT,VPRS_ZAKLAD_0001 as VPRS, MARZA_MIN,MARZA_PROP, MARZA_NOWA FROM DWS1.POZYCJE WHERE vbeln ='" + nzlec.ToString() + "'", conn1))
                 {
                     conn1.Open();
                     using (OracleDataReader reader1 = cmd1.ExecuteReader())
@@ -254,9 +255,8 @@ namespace Pricing
 
                         for (int a = 0; a < dataGridView2.Rows.Count; a++)
                         {
-                            dataGridView2.Rows[a].Cells[9].Value = dokiedyzlecenie.Date.ToString("yyyyMMdd");
+                            dataGridView2.Rows[a].Cells[10].Value = dokiedyzlecenie.Date.ToString("yyyyMMdd");
                         }
-
 
 
                         for (int c = 0; c < dataGridView2.Rows.Count; c++)
@@ -267,8 +267,12 @@ namespace Pricing
 
                             }
                         }
-
                     }
+
+
+                    negativetbox.Text = lastCommentReturn(num, conn1);
+
+
 
                     using (OracleCommand cmd11 = new OracleCommand("SELECT * FROM DWS1.AUTOMAT_KLIENT_TABLE WHERE ODBIORCA = '" + odbiorca.ToString() + "'", conn1))
                     {
@@ -315,7 +319,22 @@ namespace Pricing
             }
         }
 
-       
+        private string lastCommentReturn(string numerZlecenia, OracleConnection conn1)
+        {
+                using (OracleCommand commandComment = new OracleCommand("SELECT KOMENTARZ FROM APLIKACJA_CENY_KOMENTARZE WHERE NR_ZLECENIA = '" + numerZlecenia + "'", conn1))
+                {
+                    using (OracleDataReader readerComment = commandComment.ExecuteReader())
+                    {
+                        readerComment.Read();
+
+                    if (!readerComment.HasRows)
+                    {
+                        return null;
+                    }
+                        return readerComment["KOMENTARZ"].ToString();
+                    }
+                }
+        }
 
         private void opiniabtn_Click(object sender, EventArgs e)
         {
@@ -384,6 +403,7 @@ namespace Pricing
             string StringQuery;
             string InsertZlecenieHistory;
             string StringQuery2;
+            string StringQuery3;
 
 
             try
@@ -406,10 +426,10 @@ namespace Pricing
                             string CENA_MIN = dataGridView2.Rows[i].Cells[4].Value.ToString();
                             string CENA_ZPR1 = dataGridView2.Rows[i].Cells[5].Value.ToString();
                             string CENA_NOWA = dataGridView2.Rows[i].Cells[7].Value.ToString();
-                            string vprs = dataGridView2.Rows[i].Cells[11].Value.ToString();
-                            string MARZA_MIN = dataGridView2.Rows[i].Cells[12].Value.ToString();
-                            string MARZA_ZPR1 = dataGridView2.Rows[i].Cells[13].Value.ToString();
-                            string MARZA_NOWA = dataGridView2.Rows[i].Cells[14].Value.ToString();
+                            string vprs = dataGridView2.Rows[i].Cells[12].Value.ToString();
+                            string MARZA_MIN = dataGridView2.Rows[i].Cells[13].Value.ToString();
+                            string MARZA_ZPR1 = dataGridView2.Rows[i].Cells[14].Value.ToString();
+                            string MARZA_NOWA = dataGridView2.Rows[i].Cells[15].Value.ToString();
                             string UZYTKOWNIK = Environment.UserName;
 
 
@@ -457,7 +477,18 @@ namespace Pricing
 
                         cmdstat3.CommandText = StringQuery2;
                         cmdstat3.ExecuteNonQuery();
-      
+
+                        if (lastCommentReturn(numerZlecenia,conne1) == null)
+                        {
+                            StringQuery3 = "INSERT INTO DWS1.APLIKACJA_CENY_KOMENTARZE VALUES ('" + numerZlecenia + "','" + negativetbox.Text + "')";
+                        }
+                        else
+                        {
+                            StringQuery3 = "UPDATE APLIKACJA_CENY_KOMENTARZE SET KOMENTARZ = '" + negativetbox.Text + "' WHERE NR_ZLECENIA = '" + numerZlecenia + "'";
+                        }
+
+                        cmdstat3.CommandText = StringQuery3;
+                        cmdstat3.ExecuteNonQuery();
                         //MessageBox.Show("Zlecenie nr " + nzlec + " zostało zaakceptowane i przekazane do SAP"); 
                     }
                     conne1.Close(); 
@@ -476,18 +507,16 @@ namespace Pricing
         public void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
            
-
-            string merge = dataGridView2.CurrentRow.Cells[11].Value.ToString();
+            string merge = dataGridView2.CurrentRow.Cells[12].Value.ToString();
 
             if (dataGridView2.CurrentCell.Value.Equals(0))
             {
-                dataGridView2.CurrentRow.Cells[7].Value.Equals(0).ToString();
-                
+                dataGridView2.CurrentRow.Cells[7].Value.Equals(0).ToString();             
             }
             else
             {
                 string v1 = dataGridView2.CurrentRow.Cells[7].Value.ToString();
-                string v2 = dataGridView2.CurrentRow.Cells[11].Value.ToString();
+                string v2 = dataGridView2.CurrentRow.Cells[12].Value.ToString();
 
                 double vd1 = Convert.ToDouble(v1);
                 double vd2 = Convert.ToDouble(v2);
@@ -495,7 +524,7 @@ namespace Pricing
 
                 string v3 = vd3.ToString() + " %";
 
-                dataGridView2.CurrentRow.Cells[14].Value = v3.ToString();
+                dataGridView2.CurrentRow.Cells[15].Value = v3.ToString();
             };
 
 
@@ -507,7 +536,6 @@ namespace Pricing
             string adresat1 = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             string adresat2 = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             Smail.AddPH();
-
 
             if (Smail.ListPH.Contains(adresat1))
             {
@@ -566,7 +594,7 @@ namespace Pricing
             column3.Width = 55;
 
             DataGridViewColumn column4 = dataGridView2.Columns[3];
-            column4.Width = 25;
+            column4.Width = 35;
 
             DataGridViewColumn column5 = dataGridView2.Columns[4];
             column5.Width = 70;
@@ -575,31 +603,34 @@ namespace Pricing
             column6.Width = 75;
 
             DataGridViewColumn column7 = dataGridView2.Columns[6];
-            column7.Width = 55;
+            column7.Width = 50;
 
             DataGridViewColumn column8 = dataGridView2.Columns[7];
             column8.Width = 80;
 
 
             DataGridViewColumn column9 = dataGridView2.Columns[8];
-            column9.Width = 55;
+            column9.Width = 65;
 
             DataGridViewColumn column10 = dataGridView2.Columns[9];
-            column10.Width = 68;
+            column10.Width = 85;
 
             DataGridViewColumn column11 = dataGridView2.Columns[10];
-            column11.Width = 45;
+            column11.Width = 70;
 
             DataGridViewColumn column12 = dataGridView2.Columns[11];
-            column12.Width = 60;
+            column12.Width = 50;
 
             DataGridViewColumn column13 = dataGridView2.Columns[12];
-            column13.Width = 80;
+            column13.Width = 55;
 
             DataGridViewColumn column14 = dataGridView2.Columns[13];
             column14.Width = 85;
 
             DataGridViewColumn column15 = dataGridView2.Columns[14];
+            column15.Width = 90;
+
+            DataGridViewColumn column16 = dataGridView2.Columns[15];
             column15.Width = 90;
 
         }
